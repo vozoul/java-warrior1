@@ -132,11 +132,11 @@ public class Perso {
     }
 
     public String toString() {
-        return "Id - "+this.getId()+" : -Votre personnage : "+this.getName()+"\n"+
+        return "Id "+this.getId()+" :   -Votre personnage : "+this.getName()+"\n"+
                 "         -CLASSE : "+this.getType()+"\n"+
-                "         -Arme / Sort : "+this.getDmg().getDamName()+"\n"+
-                "         -Dommages : "+this.getDmg().getDamAtk()+"\n"+
                 "         -PDV : "+this.getLife()+"\n"+
-                "         -PDA : "+this.getAtk()+"\n";
+                "         -PDA : "+this.getAtk()+"\n"+
+                "         -Arme / Sort : "+this.getDmg().getDamName()+"\n"+
+                "         -Dommages : "+this.getDmg().getDamAtk()+"\n";
     }
 }
