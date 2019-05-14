@@ -127,17 +127,9 @@ public class Interface {
         trooper = scan.nextLine().charAt(0);
         if (trooper == 'G') {
             hero = new Warrior();
-            int min_vie = 5;
-            int max_vie = 10;
-            int min_force = 5;
-            int max_force = 10;
             hero.setType("Guerrier");
         } else if (trooper == 'M') {
             hero = new Magic();
-            int min_vie = 3;
-            int max_vie = 6;
-            int min_force = 8;
-            int max_force = 15;
             hero.setType("Magicien");
         }
         return hero;
@@ -182,6 +174,7 @@ public class Interface {
     public void delete(int id) {
         System.out.println("Etesvous sur de vouloir supprimer ? (O)ui / (N)on");
         char response = scan.nextLine().charAt(0);
+
         if (response == 'O') {
             persos[id] = null;
             System.out.println("Suppression OK");
