@@ -33,7 +33,7 @@ public class Main {
 
     //menu principale
     public static void menu(){
-        System.out.println("Quelle actions voulez vous faire ?\n (C)réer un combatant \n (A)fficher les combatant \n (Q)uitter la partie");
+        System.out.println("Quelle actions voulez vous faire ?\n -(C)réer un combatant \n -(A)fficher les combatant \n -(Q)uitter la partie");
         menuResponse = scan.nextLine().charAt(0);
     }
 
@@ -43,35 +43,43 @@ public class Main {
         System.out.println("Construit ton armée");
         System.out.println("(G)uerrier / (M)agicien ?");
         trooper = scan.nextLine().charAt(0);
-        if(trooper == 'G'){
+        if (trooper == 'G') {
             personnage = new Warrior();
-            personnage.setId(id);
             personnage.setType("Guerrier");
-        }else if(trooper == 'M'){
+        } else if (trooper == 'M') {
             personnage = new Magic();
-            personnage.setId(id);
             personnage.setType("Magicien");
         }
+        personnage.setId(id);
         System.out.println("Quel nom voulez vous ?");
         personnage.setName(scan.nextLine());
-//        boolean checked = false;
-//        while(checked == false) {
-//            System.out.println("Repartissez vos XP, Vos point de vie entre " + personnage.getMin_vie() + " et " + personnage.getMax_vie());
+        boolean checked = false;
+        int value = 0;
+        while(checked == false) {
             System.out.println("Repartissez vos XP, Vos point de vie entre " + personnage.getMin_vie() + " et " + personnage.getMax_vie());
-//            value = scan.nextInt();
-//            check(value);
-//            personnage.setLife();
-//        }
-        personnage.setLife(scan.nextInt());
-        System.out.println("Repartissez vos XP, Vos point d'attaque entre "+personnage.getMin_force()+" et "+personnage.getMax_force());
-        personnage.setAtk(scan.nextInt());
-        scan.nextLine();
-        scan.nextLine();
-
+            int val = scan.nextInt();
+            scan.nextLine();
+            checked = check(val, "vie");
+            System.out.println(checked);
+            value = val;
+        }
+        personnage.setLife(value);
+        checked = false;
+        value = 0;
+        while(checked == false) {
+            System.out.println("Repartissez vos XP, Vos point d'attaque entre " + personnage.getMin_force() + " et " + personnage.getMax_force());
+            int val = scan.nextInt();
+            scan.nextLine();
+            checked = check(val, "atk");
+            value = val;
+        }
+        personnage.setAtk(value);
+        checked = false;
         persos[id] = personnage;
         id++;
     }
 
+    //affiche la liste de personnage
     public static void affiche(){
         int plein = 0;
         for (int i = 0; i<persos.length; i++) {
@@ -81,10 +89,11 @@ public class Main {
             }
         }
         if(plein == 0){
-            System.out.println(
-                    "/**************************\\"+"\n"+
-                    "Vous n'avez pas de combatant"+"\n"+
-                    "\\**************************/"+"\n"
+
+            System.out.println("\n"+
+                    "/**************************\\"+"\n\n"+
+                    "Vous n'avez pas de combatant"+"\n\n"+
+                    "\\**************************/"+"\n\n"
             );
         }else{
             System.out.println("Voulez vous modifier un combatant ? (O)ui / (N)on");
@@ -97,10 +106,25 @@ public class Main {
                     }
                 }
                 int mod = scan.nextInt();
-                scan.nextLine();
+                //createPlayer(mod);
             }
         }
     }
 
-    public static void check(){}
+    //check si entre val max et val min
+    public static boolean check(int val, String type){
+        int min = 0;
+        int max = 0;
+        if(type == "vie"){
+            min = personnage.getMin_vie();
+            max = personnage.getMax_vie();
+        }else if(type == "atk"){
+            min = personnage.getMin_force();
+            max = personnage.getMax_force();
+        }
+        if(val >= min || val <= max) {
+            return true;
+        }
+        return false;
+    }
 }
