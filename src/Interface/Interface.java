@@ -15,6 +15,8 @@ public class Interface {
     private Perso personnage = null;
     private Perso persos[] = new Perso[10];
     private int id = 0;
+
+    //Demarrage
     public void start(){
         System.out.println("Bonjour jeune paladin !\nSouhaite tu construire une armée\nafin d'occire quelques dragon\n");
         System.out.println("(O)ui / (N)on ?");
@@ -25,6 +27,8 @@ public class Interface {
                 createPlayer();
             }else if(menuResponse == 'M') {
                 selectCombatant("modif");
+            }else if(menuResponse == 'S') {
+                selectCombatant("select");
             }else if(menuResponse == 'A') {
                 affiche();
             }else{
@@ -57,7 +61,7 @@ public class Interface {
         id++;
     }
 
-    //affiche la liste de personnage
+    //liste et choix de personnage
     public void affiche(){
         if(isCombatant()) {
             for (int i = 0; i < persos.length; i++) {
@@ -69,8 +73,6 @@ public class Interface {
             noCombatant();
         }
     }
-
-    //modifie un perso
     public void selectCombatant(String action){
         if(isCombatant()) {
             int exitMenu = 0;
@@ -96,6 +98,7 @@ public class Interface {
         }
     }
 
+    //edit & modifie un perso
     public void selectModif(int id){
         Perso perso = persos[id];
         System.out.println("quelle modification voulez vous apporter");
@@ -112,7 +115,6 @@ public class Interface {
             delete(id);
         }
     }
-
     public Perso setClasse(Perso hero){
         char trooper;
         System.out.println("(G)uerrier / (M)agicien ?");
@@ -126,7 +128,6 @@ public class Interface {
         }
         return hero;
     }
-
     public void resetName(int id){
         Perso perso = persos[id];
         String oldName = perso.getName();
@@ -138,7 +139,6 @@ public class Interface {
             perso.setName(newName);
         }
     }
-
     public void setVie(Perso personnage){
         boolean checked = false;
         int value = 0;
@@ -153,7 +153,6 @@ public class Interface {
             }
         }
     }
-
     public void setForce(Perso personnage){
         boolean checked = false;
         int value = 0;
@@ -168,7 +167,6 @@ public class Interface {
             }
         }
     }
-
     public void delete(int id){
         System.out.println("Etesvous sur de vouloir supprimer ? (O)ui / (N)on");
         char response = scan.nextLine().charAt(0);
@@ -210,12 +208,11 @@ public class Interface {
         }
         return false;
     }
-
     public void noCombatant(){
         System.out.println("\n"+
-                "/**************************\\"+"\n\n"+
-                "Vous n'avez pas de combatant"+"\n\n"+
-                "\\**************************/"+"\n\n"
+                "/=====**************************=====\\"+"\n\n"+
+                "     Vous n'avez pas de combatant     "+"\n\n"+
+                "\\=====**************************=====/"+"\n\n"
         );
     }
 }
