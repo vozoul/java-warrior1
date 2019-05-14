@@ -1,8 +1,10 @@
 package Interface;
+
 import Perso.Classes.Magic;
 import Perso.Classes.Warrior;
 import Perso.Perso;
 import java.util.Scanner;
+
 public class Interface {
 
     //Variable globales
@@ -13,8 +15,6 @@ public class Interface {
     private Perso personnage = null;
     private Perso persos[] = new Perso[10];
     private int id = 0;
-
-    //Lancement
     public void start(){
         System.out.println("Bonjour jeune paladin !\nSouhaite tu construire une armée\nafin d'occire quelques dragon\n");
         System.out.println("(O)ui / (N)on ?");
@@ -95,6 +95,7 @@ public class Interface {
             noCombatant();
         }
     }
+
     public void selectModif(int id){
         Perso perso = persos[id];
         System.out.println("quelle modification voulez vous apporter");
@@ -111,6 +112,7 @@ public class Interface {
             delete(id);
         }
     }
+
     public Perso setClasse(Perso hero){
         char trooper;
         System.out.println("(G)uerrier / (M)agicien ?");
@@ -124,6 +126,7 @@ public class Interface {
         }
         return hero;
     }
+
     public void resetName(int id){
         Perso perso = persos[id];
         String oldName = perso.getName();
@@ -135,6 +138,7 @@ public class Interface {
             perso.setName(newName);
         }
     }
+
     public void setVie(Perso personnage){
         boolean checked = false;
         int value = 0;
@@ -149,6 +153,7 @@ public class Interface {
             }
         }
     }
+
     public void setForce(Perso personnage){
         boolean checked = false;
         int value = 0;
@@ -163,6 +168,7 @@ public class Interface {
             }
         }
     }
+
     public void delete(int id){
         System.out.println("Etesvous sur de vouloir supprimer ? (O)ui / (N)on");
         char response = scan.nextLine().charAt(0);
@@ -204,6 +210,7 @@ public class Interface {
         }
         return false;
     }
+
     public void noCombatant(){
         System.out.println("\n"+
                 "/**************************\\"+"\n\n"+
