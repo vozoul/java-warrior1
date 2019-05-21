@@ -1,8 +1,8 @@
-package Perso.Damagers;
+package Perso.Equipements.Weapons;
 
-import Perso.Damager;
+import Perso.Equipement;
 
-public class Sword extends Damager {
+public class Sword extends Equipement {
     private String name = "Excalibure";
     private int power = 6;
 

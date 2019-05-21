@@ -1,5 +1,5 @@
 package Perso.Classes;
-import Perso.Damagers.Spell;
+import Perso.Equipements.Spells.Lightning;
 import Perso.Perso;
 import java.awt.*;
 public class Magic extends Perso {
@@ -13,26 +13,24 @@ public class Magic extends Perso {
 
     //Constructeurs
     public Magic() {
-        super.setMin_vie(min_vie);
-        super.setMax_vie(max_vie);
-        super.setMin_force(min_force);
-        super.setMax_force(max_force);
-        super.setDmg(new Spell());
+        normal();
     }
     public Magic(String name) {
         super(name);
-        super.setMin_vie(min_vie);
-        super.setMax_vie(max_vie);
-        super.setMin_force(min_force);
-        super.setMax_force(max_force);
-        super.setDmg(new Spell());
+        normal();
     }
     public Magic(String name, Image pict, int life, int atk) {
         super(name, pict, life, atk);
+        normal();
+    }
+
+    private void normal(){
         super.setMin_vie(min_vie);
         super.setMax_vie(max_vie);
         super.setMin_force(min_force);
         super.setMax_force(max_force);
-        super.setDmg(new Spell());
+        super.setType("Magicien");
+        super.setProtection(protection);
+        super.setDmg(new Lightning());
     }
 }

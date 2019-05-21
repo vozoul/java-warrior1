@@ -13,7 +13,7 @@ public class Perso {
     private String type;
     private int life;
     private int atk;
-    private Damager dmg;
+    private Equipement dmg;
     private String protection;
 
     //Constructeur
@@ -49,7 +49,7 @@ public class Perso {
     public int getAtk() {
         return atk;
     }
-    public Damager getDmg() {
+    public Equipement getDmg() {
         return dmg;
     }
     public String getProtection() {
@@ -90,7 +90,7 @@ public class Perso {
     public void setAtk(int atk) {
         this.atk = atk;
     }
-    public void setDmg(Damager dmg) {
+    public void setDmg(Equipement dmg) {
         this.dmg = dmg;
     }
     public void setProtection(String protection) {
@@ -109,13 +109,19 @@ public class Perso {
         this.max_force = max_force;
     }
 
-    //toString
+    /**
+     *
+     * @return
+     */
     public String toString() {
         return "Id "+this.getId()+" :   -Votre personnage : "+this.getName()+"\n"+
                 "         -CLASSE : "+this.getType()+"\n"+
+                "         -Caracteristiques : \n"+
                 "         -PDV : "+this.getLife()+"\n"+
                 "         -PDA : "+this.getAtk()+"\n"+
+                "         -Armement : \n"+
                 "         -Arme / Sort : "+this.getDmg().getDamName()+"\n"+
-                "         -Dommages : "+this.getDmg().getDamAtk()+"\n";
+                "         -Dommages : "+this.getDmg().getDamAtk()+"\n"+
+                "         -Protection : "+this.getProtection()+"\n";
     }
 }

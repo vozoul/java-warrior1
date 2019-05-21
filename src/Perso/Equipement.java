@@ -1,7 +1,8 @@
 package Perso;
 
-public class Damager{
+public class Equipement {
 
+    //offensive equipement
     private String damName;
     private int damAtk;
 
